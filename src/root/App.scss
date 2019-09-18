@@ -4,9 +4,26 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%; /* Now 10px = 1rem! */
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
 .container {
   display: grid;
   height: 100vh;
   grid-template-columns: repeat(12, minmax(150px, 1fr));
   grid-template-rows: 10% 50% 40%;
+  overflow-x: hidden;
 }
