@@ -23,7 +23,7 @@ ul {
 .container {
   display: grid;
   height: 100vh;
-  grid-template-columns: repeat(12, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   grid-template-rows: 10% 50% 40%;
-  overflow-x: hidden;
 }
+
