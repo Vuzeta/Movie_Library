@@ -1,0 +1,32 @@
+$color-secondary: hsl(217, 8%, 43%);
+$color-tertiary: hsl(215, 10%, 58%);
+$link-hover-color: hsl(193, 73%, 58%);
+
+.categories {
+    margin-top: 80px;
+  
+    &__title {
+      margin-bottom: 20px;
+      color: $color-secondary;
+      font-size: 2rem;
+      letter-spacing: 3px;
+      text-align: center;
+      cursor: default;
+      text-transform: uppercase;
+    }
+    &__list {
+      margin-left: 86px;
+      display: flex;
+      flex-direction: column;
+    }
+    &__link {
+      cursor: pointer;
+      padding: 2px 0px;
+      color: $color-tertiary;
+    }
+    
+    &__link:hover {
+      color: $link-hover-color;
+      transition: 0.2s;
+    }
+  }

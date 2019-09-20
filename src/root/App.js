@@ -6,13 +6,13 @@ import UpperNav from '../layouts/UpperNav/UpperNav';
 import CenterNav from '../layouts/CenterNav/CenterNav';
 
 const app = () => {
-  return (
-    <div class="container">
-      <SideNav />
-      <UpperNav />
-      <CenterNav />
-    </div>
-  );
+	return (
+		<div className="container">
+			<SideNav />
+			<UpperNav />
+			<CenterNav />
+		</div>
+	);
 };
 
 export default app;

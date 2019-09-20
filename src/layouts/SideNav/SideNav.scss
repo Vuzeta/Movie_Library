@@ -5,18 +5,24 @@ $bg-color: hsl(201, 30%, 9%);
 $link-hover-color: hsl(193, 73%, 58%);
 
 .sideNav {
-  background-color: $bg-color;
   grid-column: 1/3;
   grid-row: 1/-1;
   overflow-y: auto;
-
+  background: rgba(17,26,31,1);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(17,26,31,1)), color-stop(37%, rgba(17,26,31,1)), color-stop(51%, rgba(17,26,31,1)), color-stop(71%, rgba(17,26,31,1)), color-stop(100%, rgba(11,22,26,1)));
+  background: -moz-linear-gradient(left, rgba(17,26,31,1) 0%, rgba(17,26,31,1) 37%, rgba(17,26,31,1) 51%, rgba(17,26,31,1) 71%, rgba(11,22,26,1) 100%);
+  background: -o-linear-gradient(left, rgba(17,26,31,1) 0%, rgba(17,26,31,1) 37%, rgba(17,26,31,1) 51%, rgba(17,26,31,1) 71%, rgba(11,22,26,1) 100%);
+  background: -webkit-linear-gradient(left, rgba(17,26,31,1) 0%, rgba(17,26,31,1) 37%, rgba(17,26,31,1) 51%, rgba(17,26,31,1) 71%, rgba(11,22,26,1) 100%);
+  background: linear-gradient(to right, rgba(17,26,31,1) 0%, rgba(17,26,31,1) 37%, rgba(17,26,31,1) 51%, rgba(17,26,31,1) 71%, rgba(11,22,26,1) 100%);
+  background: -ms-linear-gradient(left, rgba(17,26,31,1) 0%, rgba(17,26,31,1) 37%, rgba(17,26,31,1) 51%, rgba(17,26,31,1) 71%, rgba(11,22,26,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#111a1f', endColorstr='#0b161a', GradientType=1 );
+  
   &::-webkit-scrollbar {
     width: 1rem;
   }
 
   &::-webkit-scrollbar-thumb {
     background: $link-hover-color;
-    outline: 1px solid red;
     border-radius: 12px;
   }
 
@@ -24,64 +30,5 @@ $link-hover-color: hsl(193, 73%, 58%);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-  }
-
-  &__link {
-    cursor: pointer;
-  }
-
-  &__link:hover {
-    color: $link-hover-color;
-    transition: 0.2s;
-  }
-}
-
-.mainLinks {
-  text-transform: uppercase;
-
-  &__link {
-    text-align: center;
-    font-size: 2.2rem;
-    color: $color-primary;
-    padding: 3px 0px;
-  }
-}
-
-.categoriesWrapper {
-  &__title {
-    cursor: default;
-    text-transform: uppercase;
-  }
-}
-
-.logoWrapper {
-  &__logo {
-    font-family: 'Lobster', cursive;
-    font-size: 3rem;
-    text-align: center;
-    padding: 40px 0px;
-    color: $color-primary;
-  }
-}
-
-.categoriesWrapper {
-  margin-top: 80px;
-
-  &__title {
-    margin-bottom: 20px;
-    color: $color-secondary;
-    font-size: 2rem;
-    letter-spacing: 3px;
-    text-align: center;
-  }
-}
-
-.categories {
-  margin-left: 86px;
-  display: flex;
-  flex-direction: column;
-  & li {
-    padding: 2px 0px;
-    color: $color-tertiary;
   }
 }

@@ -1,0 +1,12 @@
+$color-primary: hsl(60, 8%, 93%);
+
+.logo {
+    &__title {
+      font-family: 'Lobster', cursive;
+      font-size: 3rem;
+      text-align: center;
+      padding: 40px 0px;
+      color: $color-primary;
+      cursor: default;
+    }
+  }

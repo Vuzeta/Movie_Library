@@ -8,14 +8,14 @@ import githubIcon from '../../assets/github_logo.svg';
 
 const UpperNav = () => {
 	return (
-		<div class="upperNav">
-			<div class="upperNav__wrapper">
+		<div className="upperNav">
+			<div className="upperNav__wrapper">
 				<div className="navigation">
 					<span className="navigation__left">&#x0003C;</span>
 					<span className="navigation__center">&#x000B7;</span>
 					<span className="navigation__right">&#x0003E;</span>
 				</div>
-				<div class="search">
+				<div className="search">
 					<div>
 						<input type="text" placeholder="     Search movie" required />
 					</div>
