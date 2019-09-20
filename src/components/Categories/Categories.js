@@ -1,30 +1,68 @@
 import React from 'react';
 import './Categories.scss';
 
-const Categories = () => {
+const Categories = ({ handleSearchID }) => {
 	return (
 		<div className="categories">
 			<p className="categories__title">Categories</p>
-			<ul className="categories__list">
-				<li className="categories__link">Action</li>
-				<li className="categories__link">Adventure</li>
-				<li className="categories__link">Animation</li>
-				<li className="categories__link">Comedy</li>
-				<li className="categories__link">Crime</li>
-				<li className="categories__link">Documentary</li>
-				<li className="categories__link">Drama</li>
-				<li className="categories__link">Family</li>
-				<li className="categories__link">Fantasy</li>
-				<li className="categories__link">History</li>
-				<li className="categories__link">Horror</li>
-				<li className="categories__link">Music</li>
-				<li className="categories__link">Mystery</li>
-				<li className="categories__link">Romance</li>
-				<li className="categories__link">Science Fiction</li>
-				<li className="categories__link">TV Movie</li>
-				<li className="categories__link">Thriller</li>
-				<li className="categories__link">War</li>
-				<li className="categories__link">Western</li>
+			<ul className="categories__list" onClick={handleSearchID}>
+				<li className="categories__link" data-id="28">
+					Action
+				</li>
+				<li className="categories__link" data-id="12">
+					Adventure
+				</li>
+				<li className="categories__link" data-id="16">
+					Animation
+				</li>
+				<li className="categories__link" data-id="35">
+					Comedy
+				</li>
+				<li className="categories__link" data-id="80">
+					Crime
+				</li>
+				<li className="categories__link" data-id="99">
+					Documentary
+				</li>
+				<li className="categories__link" data-id="18">
+					Drama
+				</li>
+				<li className="categories__link" data-id="10751">
+					Family
+				</li>
+				<li className="categories__link" data-id="14">
+					Fantasy
+				</li>
+				<li className="categories__link" data-id="36">
+					History
+				</li>
+				<li className="categories__link" data-id="27">
+					Horror
+				</li>
+				<li className="categories__link" data-id="10402">
+					Music
+				</li>
+				<li className="categories__link" data-id="9648">
+					Mystery
+				</li>
+				<li className="categories__link" data-id="10749">
+					Romance
+				</li>
+				<li className="categories__link" data-id="878">
+					Science Fiction
+				</li>
+				<li className="categories__link" data-id="10770">
+					TV Movie
+				</li>
+				<li className="categories__link" data-id="53">
+					Thriller
+				</li>
+				<li className="categories__link" data-id="10752">
+					War
+				</li>
+				<li className="categories__link" data-id="37">
+					Western
+				</li>
 			</ul>
 		</div>
 	);

@@ -30,15 +30,3 @@
   justify-items: center;
   padding-bottom: 50px;
 }
-
-.card {
-  width: 150px;
-  &__img {
-    width: 150px;
-  }
-  &__title {
-    text-align: center;
-    color: hsl(60, 8%, 93%);
-    font-weight: 400;
-  }
-}

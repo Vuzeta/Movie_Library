@@ -1,134 +1,15 @@
 import React from 'react';
 import './CenterNav.scss';
+import MovieCard from '../../components/MovieCard/MovieCard';
 
-import exampleIMG from '../../assets/example_movie_img.jpg';
-
-const CenterNav = () => {
+const CenterNav = ({ title, movies }) => {
+	const moviesList = movies.map(card => (
+		<MovieCard key={card.id} title={card.title || card.name} imgPath={card.poster_path} />
+	));
 	return (
 		<div className="centerNav">
-			<h1 className="centerNav__title">Popularity</h1>
-			<div className="movie">
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-				<div className="movie__card card">
-					<img src={exampleIMG} alt="" className="card__img" />
-					<p className="card__title">Licence to Kill</p>
-				</div>
-			</div>
+			<h1 className="centerNav__title">{title}</h1>
+			<div className="movie">{moviesList}</div>
 		</div>
 	);
 };
