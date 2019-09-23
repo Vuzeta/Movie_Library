@@ -1,0 +1,25 @@
+.pagination {
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px 0px 15px;
+    background-color: hsl(193, 73%, 58%);
+    border-radius: 12px 12px 0px 0px;
+
+    &__page:hover, &__break:hover, &__previous:hover, &__next:hover {
+        cursor: pointer;
+    }
+
+    &__page a, &__break a, &__previous a, &__next a {
+        padding: 10px 10px 10px 10px;
+        outline: none;
+    }
+
+
+    &__active {
+        color: black;
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,13 @@
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+    &__img {
+        margin: 0 auto;
+        width: 45px;
+    }
+    &__text {
+        color: hsl(60, 8%, 93%);
+    }
+}

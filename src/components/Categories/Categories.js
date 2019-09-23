@@ -1,67 +1,203 @@
 import React from 'react';
+
+import { NavLink } from 'react-router-dom';
+
 import './Categories.scss';
 
 const Categories = ({ handleSearchID }) => {
 	return (
 		<div className="categories">
 			<p className="categories__title">Categories</p>
-			<ul className="categories__list" onClick={handleSearchID}>
-				<li className="categories__link" data-id="28">
-					Action
+			<ul className="categories__list">
+				<li className="categories_item">
+					<NavLink
+						to="/action"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Action
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="12">
-					Adventure
+				<li className="categories_item">
+					<NavLink
+						to="/adventure"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Adventure
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="16">
-					Animation
+				<li className="categories_item">
+					<NavLink
+						to="/animation"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Animation
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="35">
-					Comedy
+				<li className="categories_item">
+					<NavLink
+						to="/comedy"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Comedy
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="80">
-					Crime
+				<li className="categories_item">
+					<NavLink
+						to="/crime"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Crime
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="99">
-					Documentary
+				<li className="categories_item">
+					<NavLink
+						to="/documentary"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Documentary
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="18">
-					Drama
+				<li className="categories_item">
+					<NavLink
+						to="/drama"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Drama
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="10751">
-					Family
+				<li className="categories_item">
+					<NavLink
+						to="/family"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Family
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="14">
-					Fantasy
+				<li className="categories_item">
+					<NavLink
+						to="/fantasy"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Fantasy
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="36">
-					History
+				<li className="categories_item">
+					<NavLink
+						to="/history"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						History
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="27">
-					Horror
+				<li className="categories_item">
+					<NavLink
+						to="/horror"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Horror
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="10402">
-					Music
+				<li className="categories_item">
+					<NavLink
+						to="/music"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Music
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="9648">
-					Mystery
+				<li className="categories_item">
+					<NavLink
+						to="/mystery"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Mystery
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="10749">
-					Romance
+				<li className="categories_item">
+					<NavLink
+						to="/romance"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Romance
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="878">
-					Science Fiction
+				<li className="categories_item">
+					<NavLink
+						to="/science-fiction"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Science Fiction
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="10770">
-					TV Movie
+				<li className="categories_item">
+					<NavLink
+						to="/tv-movie"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						TV Movie
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="53">
-					Thriller
+				<li className="categories_item">
+					<NavLink
+						to="/thriller"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Thriller
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="10752">
-					War
+				<li className="categories_item">
+					<NavLink
+						to="/war"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						War
+					</NavLink>
 				</li>
-				<li className="categories__link" data-id="37">
-					Western
+				<li className="categories_item">
+					<NavLink
+						to="/western"
+						exact
+						className="categories__link"
+						activeClassName="categories__selected"
+					>
+						Western
+					</NavLink>
 				</li>
 			</ul>
 		</div>

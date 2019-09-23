@@ -5,15 +5,24 @@ $link-hover-color: hsl(193, 73%, 58%);
     &__list {
         text-transform: uppercase;
     }
-    &__link {
-      cursor: pointer;
+    &__item {
       text-align: center;
-      font-size: 2.2rem;
-      color: $color-primary;
-      padding: 3px 0px;
     }
+
+    &__link {
+      color: $color-primary;
+      text-decoration: none;
+      padding: 3px 0px;
+      font-size: 2.2rem;
+      cursor: pointer;
+    }
+
     &__link:hover {
       color: $link-hover-color;
       transition: 0.2s;
     }
+  }
+
+  .link_selected {
+    color: $link-hover-color;
   }

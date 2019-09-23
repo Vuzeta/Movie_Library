@@ -8,4 +8,12 @@
       color: hsl(60, 8%, 93%);
       font-weight: 400;
     }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover > &__title {
+      text-decoration: underline;
+    }
   }
