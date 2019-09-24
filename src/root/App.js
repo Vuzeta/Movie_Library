@@ -29,6 +29,8 @@ import Thriller from '../pages/Thriller/Thriller';
 import War from '../pages/War/War';
 import Western from '../pages/Western/Western';
 
+import Movie from '../components/Movie/Movie';
+
 class App extends Component {
 	state = {};
 
@@ -61,6 +63,7 @@ class App extends Component {
 						<Route path="/thriller" component={Thriller} />
 						<Route path="/war" component={War} />
 						<Route path="/western" component={Western} />
+						<Route path="/movie/:id" component={Movie} />
 					</div>
 				</div>
 			</Router>
