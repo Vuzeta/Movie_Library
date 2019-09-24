@@ -1,0 +1,84 @@
+.movie {
+  display: grid;
+  width: 90%;
+  grid-template-columns: 1fr 300px;
+  grid-gap: 40px;
+  color: hsl(60, 8%, 93%);
+  padding: 100px 0px 0px 150px;
+
+  &__title {
+    font-weight: bold;
+    font-size: 3.5rem;
+    margin-bottom: 5px;
+  }
+
+  &__ranking {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    margin-bottom: 50px;
+  }
+
+  &__box {
+    width: 100%;
+  }
+}
+
+.starbox {
+  display: flex;
+
+  &__ratio {
+    margin-left: 10px;
+  }
+
+  &__img {
+    width: 25px;
+    margin: 0px 5px 0px 0px;
+  }
+}
+
+.info {
+  color: hsl(217, 8%, 43%);
+}
+
+.overview {
+  &__description {
+    font-weight: 400;
+    width: 550px;
+    margin-bottom: 50px;
+  }
+}
+
+.cast {
+  &__title {
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+  }
+
+  &__box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  &__actor {
+    padding: 30px 30px 20px 30px;
+    text-align: center;
+  }
+
+  &__img {
+    width: 150px;
+    margin-bottom: 4px;
+  }
+}
+
+.directed {
+  display: flex;
+  flex-direction: column;
+  margin-top: 126px;
+
+  &__person {
+    padding: 10px 0px;
+  }
+}

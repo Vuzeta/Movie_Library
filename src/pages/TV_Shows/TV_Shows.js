@@ -70,8 +70,8 @@ class TV_Shows extends Component {
 		return (
 			<>
 				<h1 className="centerNav__title">{_PAGETITLE}</h1>
-				<div className="movie"></div>
-				{error ? <ErrorMessage /> : <div className="movie">{moviesList}</div>}
+				<div className="movies"></div>
+				{error ? <ErrorMessage /> : <div className="movies">{moviesList}</div>}
 				{error ? null : <Pagination total_pages={total_pages} changePage={this.changePage} />}
 			</>
 		);
