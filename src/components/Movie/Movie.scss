@@ -16,8 +16,8 @@
     height: 100%;
     z-index: 0;
     opacity: 0.2;
-    // background: url("https://image.tmdb.org/t/p/original/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg") no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100% !important;
+    filter: blur(4px);
   }
 
   &__title {
@@ -67,12 +67,12 @@
 
   &__box {
     display: flex;
-    justify-content: center;
     width: 100%;
     flex-wrap: wrap;
   }
 
   &__actor {
+    width: 230px;
     padding: 30px 30px 20px 30px;
     text-align: center;
   }

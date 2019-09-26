@@ -48,7 +48,7 @@ class Movie extends Component {
 					ratio: vote_average / 2,
 					runtime,
 					release_date,
-					cast: credits.cast.splice(0, 6),
+					cast: credits.cast.splice(0, 8),
 					directed: credits.crew.splice(0, 3),
 					adult,
 					background_poster: `https://image.tmdb.org/t/p/original${backdrop_path}`,
@@ -97,10 +97,7 @@ class Movie extends Component {
 
 		return (
 			<div className="movie">
-				<div
-					className="movie__bg"
-					style={{ background: `url(${background_poster}) no-repeat center center` }}
-				></div>
+				<div className="movie__bg" style={{ background: `url(${background_poster})` }}></div>
 				<div className="movie__box">
 					<h1 className="movie__title">{title}</h1>
 					<div className="movie__ranking">
