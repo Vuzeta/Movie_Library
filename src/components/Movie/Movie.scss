@@ -1,7 +1,6 @@
 .movie {
   display: grid;
   width: 100%;
-  // height: 100%;
   grid-template-columns: 1fr 300px;
   grid-gap: 40px;
   color: hsl(60, 8%, 93%);
@@ -37,59 +36,5 @@
   &__box {
     z-index: 99999;
     width: 100%;
-  }
-}
-
-.starbox {
-  display: flex;
-
-  &__ratio {
-    margin-left: 10px;
-  }
-}
-
-.info {
-  color: hsl(217, 8%, 43%);
-}
-
-.overview {
-  &__description {
-    font-weight: 400;
-    width: 550px;
-    margin-bottom: 50px;
-  }
-}
-
-.cast {
-  &__title {
-    font-size: 2.3rem;
-    margin-bottom: 15px;
-  }
-
-  &__box {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-  }
-
-  &__actor {
-    width: 230px;
-    padding: 30px 30px 20px 30px;
-    text-align: center;
-  }
-
-  &__img {
-    width: 150px;
-    margin-bottom: 4px;
-  }
-}
-
-.directed {
-  display: flex;
-  flex-direction: column;
-  margin-top: 126px;
-
-  &__person {
-    padding: 10px 0px;
   }
 }

@@ -9,7 +9,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
 const _PAGETITLE = 'TV Movies';
 const _GENDRES_ID = 10770;
-const _LANGUAGE = 'pl-PL';
+const _LANGUAGE = 'en-US';
 
 class TV_Movies extends Component {
 	state = {
@@ -65,7 +65,7 @@ class TV_Movies extends Component {
 				key={card.id}
 				id={card.id}
 				title={card.title || card.name}
-				imgPath={card.poster_path}
+				imgPath={card.poster_path} category={_PAGETITLE}
 			/>
 		));
 		return (

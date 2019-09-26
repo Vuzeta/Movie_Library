@@ -9,74 +9,75 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
 const _PAGETITLE = 'Adventure';
 const _GENDRES_ID = 12;
-const _LANGUAGE = 'pl-PL';
+const _LANGUAGE = 'en-US';
 
 class Adventure extends Component {
-	state = {
-		movies: [],
-		total_pages: 0,
-		current_page: 1,
-		error: false,
-	};
+  state = {
+    movies: [],
+    total_pages: 0,
+    current_page: 1,
+    error: false,
+  };
 
-	changePage = e => {
-		const page = e.selected + 1;
+  changePage = e => {
+    const page = e.selected + 1;
 
-		const requestHost = `https://api.themoviedb.org/3/discover/movie?api_key=${_APIKEY}&language=${_LANGUAGE}&sort_by=popularity.desc&page=${page}&with_genres=${_GENDRES_ID}`;
+    const requestHost = `https://api.themoviedb.org/3/discover/movie?api_key=${_APIKEY}&language=${_LANGUAGE}&sort_by=popularity.desc&page=${page}&with_genres=${_GENDRES_ID}`;
 
-		axios
-			.get(requestHost)
-			.then(res => {
-				this.setState({
-					movies: res.data.results,
-				});
-			})
-			.catch(error => {
-				console.log(error);
-				this.setState(prevState => ({
-					error: !prevState.error,
-				}));
-			});
-	};
+    axios
+      .get(requestHost)
+      .then(res => {
+        this.setState({
+          movies: res.data.results,
+        });
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState(prevState => ({
+          error: !prevState.error,
+        }));
+      });
+  };
 
-	componentDidMount() {
-		const requestHost = `https://api.themoviedb.org/3/discover/movie?api_key=${_APIKEY}&language=${_LANGUAGE}&sort_by=popularity.desc&page=1&with_genres=${_GENDRES_ID}`;
+  componentDidMount() {
+    const requestHost = `https://api.themoviedb.org/3/discover/movie?api_key=${_APIKEY}&language=${_LANGUAGE}&sort_by=popularity.desc&page=1&with_genres=${_GENDRES_ID}`;
 
-		axios
-			.get(requestHost)
-			.then(res => {
-				this.setState({
-					movies: res.data.results,
-					total_pages: res.data.total_pages,
-				});
-			})
-			.catch(error => {
-				console.log(error);
-				this.setState(prevState => ({
-					error: !prevState.error,
-				}));
-			});
-	}
-	render() {
-		const { movies, total_pages, error } = this.state;
+    axios
+      .get(requestHost)
+      .then(res => {
+        this.setState({
+          movies: res.data.results,
+          total_pages: res.data.total_pages,
+        });
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState(prevState => ({
+          error: !prevState.error,
+        }));
+      });
+  }
+  render() {
+    const { movies, total_pages, error } = this.state;
 
-		const moviesList = movies.map(card => (
-			<MovieCard
-				key={card.id}
-				id={card.id}
-				title={card.title || card.name}
-				imgPath={card.poster_path}
-			/>
-		));
-		return (
-			<>
-				<h1 className="centerNav__title">{_PAGETITLE}</h1>
-				<div className="movies"></div>
-				{error ? <ErrorMessage /> : <div className="movies">{moviesList}</div>}
-				{error ? null : <Pagination total_pages={total_pages} changePage={this.changePage} />}
-			</>
-		);
-	}
+    const moviesList = movies.map(card => (
+      <MovieCard
+        key={card.id}
+        id={card.id}
+        title={card.title || card.name}
+        imgPath={card.poster_path}
+        category={_PAGETITLE}
+      />
+    ));
+    return (
+      <>
+        <h1 className="centerNav__title">{_PAGETITLE}</h1>
+        <div className="movies"></div>
+        {error ? <ErrorMessage /> : <div className="movies">{moviesList}</div>}
+        {error ? null : <Pagination total_pages={total_pages} changePage={this.changePage} />}
+      </>
+    );
+  }
 }
 
 export default Adventure;

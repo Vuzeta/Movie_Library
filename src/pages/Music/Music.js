@@ -9,7 +9,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
 const _PAGETITLE = 'Music';
 const _GENDRES_ID = 10402;
-const _LANGUAGE = 'pl-PL';
+const _LANGUAGE = 'en-US';
 
 class Music extends Component {
   state = {
@@ -66,6 +66,7 @@ class Music extends Component {
         id={card.id}
         title={card.title || card.name}
         imgPath={card.poster_path}
+        category={_PAGETITLE}
       />
     ));
     return (

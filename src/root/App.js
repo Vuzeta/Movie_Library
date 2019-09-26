@@ -32,43 +32,43 @@ import Western from '../pages/Western/Western';
 import Movie from '../components/Movie/Movie';
 
 class App extends Component {
-	state = {};
+  state = {};
 
-	render() {
-		return (
-			<Router>
-				<div className="container">
-					<SideNav handleSearchID={this.handleSearchID} />
-					<UpperNav />
-					<div className="centerNav">
-						<Route path="/" exact component={Popularity} />
-						<Route path="/tv-shows" component={TV_Shows} />
-						<Route path="/favourite" component={Favourite} />
-						<Route path="/action" component={Action} />
-						<Route path="/adventure" component={Adventure} />
-						<Route path="/animation" component={Animation} />
-						<Route path="/comedy" component={Comedy} />
-						<Route path="/crime" component={Crime} />
-						<Route path="/documentary" component={Documentary} />
-						<Route path="/drama" component={Drama} />
-						<Route path="/family" component={Family} />
-						<Route path="/fantasy" component={Fantasy} />
-						<Route path="/history" component={History} />
-						<Route path="/horror" component={Horror} />
-						<Route path="/music" component={Music} />
-						<Route path="/mystery" component={Mystery} />
-						<Route path="/romance" component={Romance} />
-						<Route path="/science-fiction" component={Science_Fiction} />
-						<Route path="/tv-movie" component={TV_Movie} />
-						<Route path="/thriller" component={Thriller} />
-						<Route path="/war" component={War} />
-						<Route path="/western" component={Western} />
-						<Route path="/movie/:id" component={Movie} />
-					</div>
-				</div>
-			</Router>
-		);
-	}
+  render() {
+    return (
+      <Router>
+        <div className="container">
+          <SideNav handleSearchID={this.handleSearchID} />
+          <UpperNav />
+          <div className="centerNav">
+            <Route path="/" exact component={Popularity} />
+            <Route path="/tv-shows" component={TV_Shows} />
+            <Route path="/favourite" component={Favourite} />
+            <Route path="/action" component={Action} />
+            <Route path="/adventure" component={Adventure} />
+            <Route path="/animation" component={Animation} />
+            <Route path="/comedy" component={Comedy} />
+            <Route path="/crime" component={Crime} />
+            <Route path="/documentary" component={Documentary} />
+            <Route path="/drama" component={Drama} />
+            <Route path="/family" component={Family} />
+            <Route path="/fantasy" component={Fantasy} />
+            <Route path="/history" component={History} />
+            <Route path="/horror" component={Horror} />
+            <Route path="/music" component={Music} />
+            <Route path="/mystery" component={Mystery} />
+            <Route path="/romance" component={Romance} />
+            <Route path="/science-fiction" component={Science_Fiction} />
+            <Route path="/tv-movie" component={TV_Movie} />
+            <Route path="/thriller" component={Thriller} />
+            <Route path="/war" component={War} />
+            <Route path="/western" component={Western} />
+            <Route path="/movie/:category/:id" component={Movie} />
+          </div>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
