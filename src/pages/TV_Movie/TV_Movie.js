@@ -5,6 +5,7 @@ import MovieCard from '../../components/MovieCard/MovieCard';
 import Pagination from '../../components/Pagination/Pagination';
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import Spinner from '../../components/Spinner/Spinner';
 
 const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
 const _PAGETITLE = 'TV Movies';
@@ -27,8 +28,15 @@ class TV_Movies extends Component {
 		axios
 			.get(requestHost)
 			.then(res => {
+				setTimeout(() => {
+					this.setState({
+						loading: true,
+					});
+				}, 500);
+
 				this.setState({
 					movies: res.data.results,
+					loading: false,
 				});
 			})
 			.catch(error => {
@@ -45,6 +53,12 @@ class TV_Movies extends Component {
 		axios
 			.get(requestHost)
 			.then(res => {
+				setTimeout(() => {
+					this.setState({
+						loading: true,
+					});
+				}, 200);
+
 				this.setState({
 					movies: res.data.results,
 					total_pages: res.data.total_pages,
@@ -65,14 +79,17 @@ class TV_Movies extends Component {
 				key={card.id}
 				id={card.id}
 				title={card.title || card.name}
-				imgPath={card.poster_path} category={_PAGETITLE}
+				imgPath={card.poster_path}
+				category={_PAGETITLE}
 			/>
 		));
 		return (
 			<>
 				<h1 className="centerNav__title">{_PAGETITLE}</h1>
-				<div className="movies"></div>
-				{error ? <ErrorMessage /> : <div className="movies">{moviesList}</div>}
+				<div className="movies">
+					{!this.state.loading ? <Spinner /> : null}
+					{error ? <ErrorMessage /> : moviesList}
+				</div>
 				{error ? null : <Pagination total_pages={total_pages} changePage={this.changePage} />}
 			</>
 		);

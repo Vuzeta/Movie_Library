@@ -36,6 +36,7 @@ ul {
   grid-row: 2/-1;
   grid-column: 3/-1;
   overflow-y: auto;
+  position: relative;
 
   &::-webkit-scrollbar {
     width: 1rem;
