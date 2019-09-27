@@ -28,18 +28,27 @@ import TV_Movie from '../pages/TV_Movie/TV_Movie';
 import Thriller from '../pages/Thriller/Thriller';
 import War from '../pages/War/War';
 import Western from '../pages/Western/Western';
+import Search from '../pages/Search/Search';
 
 import Movie from '../components/Movie/Movie';
 
 class App extends Component {
-  state = {};
+  state = {
+    movieQuery: '',
+  };
+
+  handleMovieQuery = movieQuery => {
+    this.setState({
+      movieQuery,
+    });
+  };
 
   render() {
     return (
       <Router>
         <div className="container">
-          <SideNav handleSearchID={this.handleSearchID} />
-          <UpperNav />
+          <SideNav />
+          <UpperNav handleMovieQuery={this.handleMovieQuery} />
           <div className="centerNav">
             <Route path="/" exact component={Popularity} />
             <Route path="/tv-shows" component={TV_Shows} />
@@ -64,6 +73,10 @@ class App extends Component {
             <Route path="/war" component={War} />
             <Route path="/western" component={Western} />
             <Route path="/movie/:category/:id" component={Movie} />
+            <Route
+              path="/search/:query"
+              render={props => <Search {...props} movieQuery={this.state.movieQuery} />}
+            />
           </div>
         </div>
       </Router>
