@@ -113,6 +113,13 @@
     color: hsl(215, 10%, 58%);
   }
 
+  &__select {
+    background-color: hsl(193, 73%, 58%);
+    border: 0;
+    color: black;
+    outline: none;
+  }
+
   &__button {
     padding: 0;
     margin: 0;

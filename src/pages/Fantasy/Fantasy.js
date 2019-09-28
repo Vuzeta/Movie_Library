@@ -75,13 +75,13 @@ class Fantasy extends Component {
 		const { movies, total_pages, error } = this.state;
 
 		const moviesList = movies.map(card => (
-			<MovieCard
-				key={card.id}
-				id={card.id}
-				title={card.title || card.name}
-				imgPath={card.poster_path}
-				category={_PAGETITLE}
-			/>
+      <MovieCard
+        key={card.id}
+        id={card.id}
+        title={card.title || card.name}
+        imgPath={card.poster_path}
+        category={_PAGETITLE}
+      />
 		));
 		return (
 			<>

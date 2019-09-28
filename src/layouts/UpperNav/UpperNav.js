@@ -11,18 +11,25 @@ import { withRouter } from 'react-router-dom';
 
 class UpperNav extends Component {
   state = {
+    select: 'tv',
     search: '',
     focusSearch: false,
   };
 
+  handleSelect = e => {
+    const select = e.target.value;
+    this.setState({
+      select,
+    });
+  };
+
   handleSearchSubmit = e => {
     e.preventDefault();
-    console.log(`wyszukaj : ${this.state.search}`);
     this.setState(prevState => ({
       search: '',
       focusSearch: !prevState.focusSearch,
     }));
-    this.props.handleMovieQuery(this.state.search);
+    this.props.handleMovieQuery(this.state.search, this.state.select);
     this.props.history.push(`/search/${encodeURIComponent(this.state.search)}`);
   };
 
@@ -60,6 +67,10 @@ class UpperNav extends Component {
                 onClick={this.clickSearch}
                 required
               />
+              <select className="search__select" onChange={this.handleSelect}>
+                <option value="tv">TV Movie</option>
+                <option value="movie">Movie</option>
+              </select>
               <button className="search__button">
                 <img className="search__icon" src={magnifier} alt="magnifier" />
               </button>

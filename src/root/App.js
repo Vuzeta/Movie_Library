@@ -35,11 +35,13 @@ import Movie from '../components/Movie/Movie';
 class App extends Component {
   state = {
     movieQuery: '',
+    select: '',
   };
 
-  handleMovieQuery = movieQuery => {
+  handleMovieQuery = (movieQuery, select) => {
     this.setState({
       movieQuery,
+      select,
     });
   };
 
@@ -72,10 +74,15 @@ class App extends Component {
             <Route path="/thriller" component={Thriller} />
             <Route path="/war" component={War} />
             <Route path="/western" component={Western} />
-            <Route path="/movie/:category/:id" component={Movie} />
+            <Route
+              path="/movie/:category/:id"
+              render={props => <Movie {...props} select={this.state.select} />}
+            />
             <Route
               path="/search/:query"
-              render={props => <Search {...props} movieQuery={this.state.movieQuery} />}
+              render={props => (
+                <Search {...props} movieQuery={this.state.movieQuery} select={this.state.select} />
+              )}
             />
           </div>
         </div>
