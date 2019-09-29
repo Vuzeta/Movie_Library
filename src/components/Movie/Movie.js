@@ -9,6 +9,8 @@ import Overview from '../Overview/Overview';
 import Cast from '../Cast/Cast';
 import Crew from '../Crew/Crew';
 import Spinner from '../Spinner/Spinner';
+import AddFavourite from '../AddFavourite/AddFavourite';
+import RemoveFavourite from '../RemoveFavourite/RemoveFavourite';
 
 const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
 const _LANGUAGE = 'en-US';
@@ -31,15 +33,7 @@ class Movie extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
-
-    let category;
-
-    if (this.props.match.params.category === 'Search') {
-      category = this.props.select;
-    } else {
-      category = this.props.match.params.category === 'TV Shows' ? 'tv' : 'movie';
-    }
+    let category = this.props.match.params.type;
 
     const requestHost = `https://api.themoviedb.org/3/${category}/${this.state.id}?api_key=${_APIKEY}&append_to_response=credits&language=${_LANGUAGE}`;
 
@@ -141,7 +135,25 @@ class Movie extends Component {
         {!this.state.loading ? <Spinner /> : null}
         <div className="movie__bg" style={{ background: `url(${background_poster})` }}></div>
         <div className="movie__box">
-          <h1 className="movie__title">{title}</h1>
+          <div className="movie__header">
+            <h1 className="movie__title">{title}</h1>
+            {this.props.match.params.category === 'Favourite' ? (
+              <RemoveFavourite
+                category={this.state.category}
+                id={this.state.id}
+                removeFromFavouriteMovie={this.props.removeFromFavouriteMovie}
+                title={this.state.title}
+              />
+            ) : (
+              <AddFavourite
+                category={this.state.category}
+                id={this.state.id}
+                addToFavouriteMovies={this.props.addToFavouriteMovies}
+                title={this.state.title}
+              />
+            )}
+          </div>
+
           <div className="movie__ranking">
             <Starbox ratio={ratio} />
             <Characteristic

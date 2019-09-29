@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 import noImg from '../../assets/noImg.jpg';
 
-const MovieCard = ({ id, title, imgPath, category }) => {
+const MovieCard = ({ id, title, imgPath, category, type }) => {
   return (
-    <Link to={`/movie/${encodeURIComponent(category)}/${id}`}>
+    <Link to={`/movie/${encodeURIComponent(category)}/${type}/${id}`}>
       <div className="card">
         <img
           src={imgPath === null ? noImg : `https://image.tmdb.org/t/p/w500${imgPath}`}

@@ -36,6 +36,34 @@ class App extends Component {
   state = {
     movieQuery: '',
     select: '',
+    favouriteMovies: [],
+  };
+
+  addToFavouriteMovies = (category, id, title) => {
+    let movies = this.state.favouriteMovies;
+    let found = false;
+    for (let i = 0; i < movies.length; i++) {
+      if (movies[i].category === category && movies[i].id === id && movies[i].title === title) {
+        found = true;
+      }
+    }
+    if (found) {
+      console.log('jest już taki film');
+    } else {
+      this.setState(prevState => ({
+        favouriteMovies: [...prevState.favouriteMovies, { category, id, title }],
+      }));
+    }
+  };
+
+  removeFromFavouriteMovie = (id, title) => {
+    let movies = this.state.favouriteMovies;
+    movies = movies.filter(movie => movie.id !== id && movie.title !== title);
+    console.log(movies);
+
+    this.setState({
+      favouriteMovies: movies,
+    });
   };
 
   handleMovieQuery = (movieQuery, select) => {
@@ -54,7 +82,12 @@ class App extends Component {
           <div className="centerNav">
             <Route path="/" exact component={Popularity} />
             <Route path="/tv-shows" component={TV_Shows} />
-            <Route path="/favourite" component={Favourite} />
+            <Route
+              path="/favourite"
+              render={props => (
+                <Favourite {...props} favouriteMovies={this.state.favouriteMovies} />
+              )}
+            />
             <Route path="/action" component={Action} />
             <Route path="/adventure" component={Adventure} />
             <Route path="/animation" component={Animation} />
@@ -75,8 +108,15 @@ class App extends Component {
             <Route path="/war" component={War} />
             <Route path="/western" component={Western} />
             <Route
-              path="/movie/:category/:id"
-              render={props => <Movie {...props} select={this.state.select} />}
+              path="/movie/:category/:type/:id"
+              render={props => (
+                <Movie
+                  {...props}
+                  select={this.state.select}
+                  addToFavouriteMovies={this.addToFavouriteMovies}
+                  removeFromFavouriteMovie={this.removeFromFavouriteMovie}
+                />
+              )}
             />
             <Route
               path="/search/:query"

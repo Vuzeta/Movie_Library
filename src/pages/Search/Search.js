@@ -108,6 +108,7 @@ class Search extends Component {
         title={card.title || card.name}
         imgPath={card.poster_path}
         category={_PAGETITLE}
+        type={this.state.select}
       />
     ));
     return (
