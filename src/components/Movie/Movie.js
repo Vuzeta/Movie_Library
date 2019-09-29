@@ -48,14 +48,15 @@ class Movie extends Component {
           }, 500);
 
           const {
-            name,
-            overview,
-            genres,
-            vote_average,
+            backdrop_path,
             created_by,
             credits,
-            backdrop_path,
+            genres,
+            name,
+            overview,
+            vote_average,
           } = res.data;
+
           this.setState({
             title: name,
             category,

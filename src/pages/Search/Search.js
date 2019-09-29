@@ -41,7 +41,7 @@ class Search extends Component {
           });
         }, 500);
 
-        const onlyTvAndMovie = res.data.results.filter(el => el.media_type !== 'person');
+        const onlyTvAndMovie = res.data.results.filter(el => el.media_TYPE !== 'person');
 
         this.setState({
           movies: onlyTvAndMovie,

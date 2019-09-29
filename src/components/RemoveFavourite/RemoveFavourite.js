@@ -7,9 +7,7 @@ class RemoveFavourite extends Component {
 
   removeFavourite = () => {
     const id = this.props.id;
-    const category = this.props.category;
     const title = this.props.title;
-    console.log(id, category, title);
     this.props.removeFromFavouriteMovie(id, title);
     let path = `/Favourite`;
     this.props.history.push(path);

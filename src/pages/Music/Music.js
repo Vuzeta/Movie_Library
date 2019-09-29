@@ -11,7 +11,7 @@ const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
 const _PAGETITLE = 'Music';
 const _GENDRES_ID = 10402;
 const _LANGUAGE = 'en-US';
-const _type = 'movie';
+const _TYPE = 'movie';
 
 class Music extends Component {
   state = {
@@ -83,7 +83,7 @@ class Music extends Component {
         title={card.title || card.name}
         imgPath={card.poster_path}
         category={_PAGETITLE}
-        type={_type}
+        type={_TYPE}
       />
     ));
     return (

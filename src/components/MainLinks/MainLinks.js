@@ -3,47 +3,40 @@ import { NavLink } from 'react-router-dom';
 
 import './MainLinks.scss';
 
+const linksArray = [
+  {
+    path: '/',
+    title: 'Popularity',
+  },
+  {
+    path: '/tv-shows',
+    title: 'TV SHOWS',
+  },
+  {
+    path: '/favourite',
+    title: 'Favourite',
+  },
+];
+
 const MainLinks = ({ handleSearchID }) => {
-	return (
-		<div className="mainLinks">
-			<ul className="mainLinks__list">
-				<li className="mainLinks__item">
-					<NavLink
-						to="/"
-						exact
-						className="mainLinks__link"
-						activeClassName="link_selected"
-						data-id="1"
-						onClick={handleSearchID}
-					>
-						Popularity
-					</NavLink>
-				</li>
-				<li className="mainLinks__item">
-					<NavLink
-						to="/tv-shows"
-						className="mainLinks__link"
-						activeClassName="link_selected"
-						data-id="2"
-						onClick={handleSearchID}
-					>
-						TV SHOWS
-					</NavLink>
-				</li>
-				<li className="mainLinks__item">
-					<NavLink
-						to="/favourite"
-						className="mainLinks__link"
-						activeClassName="link_selected"
-						data-id="3"
-						onClick={handleSearchID}
-					>
-						Favourite
-					</NavLink>
-				</li>
-			</ul>
-		</div>
-	);
+  const linksList = linksArray.map((link, i) => (
+    <li className="mainLinks__item" key={i}>
+      <NavLink
+        to={link.path}
+        exact
+        className="mainLinks__link"
+        activeClassName="link_selected"
+        onClick={handleSearchID}
+      >
+        {link.title}
+      </NavLink>
+    </li>
+  ));
+  return (
+    <div className="mainLinks">
+      <ul className="mainLinks__list">{linksList}</ul>
+    </div>
+  );
 };
 
 export default MainLinks;

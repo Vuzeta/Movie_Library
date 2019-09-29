@@ -166,3 +166,20 @@
     transition: 0.4s;
   }
 }
+
+.language {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+
+  &__logo {
+    width: 35px;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  &__logo:hover {
+    transition: 0.3s;
+    transform: scale(1.1);
+  }
+}

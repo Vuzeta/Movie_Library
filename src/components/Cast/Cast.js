@@ -1,19 +1,14 @@
 import React from 'react';
 import './Cast.scss';
 import noImg from '../../assets/noImg.jpg';
+import Actor from '../Actor/Actor';
 
 const Cast = ({ cast }) => {
   const actors = cast.map((actor, i) => {
     const name = actor.name,
       image = actor.profile_path ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}` : noImg,
       character = actor.character;
-    return (
-      <div className="cast__actor" key={i}>
-        <img src={image} alt="actor poster" className="cast__img" />
-        <p className="cast__name">{character}</p>
-        <p className="cast__name">{name}</p>
-      </div>
-    );
+    return <Actor key={i} image={image} character={character} name={name} />;
   });
 
   return (

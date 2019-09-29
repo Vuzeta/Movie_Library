@@ -24,7 +24,7 @@ class Favourite extends Component {
         .then(res => {
           let data = res.data;
           const type = movie.category;
-          Object.assign(data, { my_type: type });
+          Object.assign(data, { my_TYPE: type });
 
           this.setState(prevState => ({
             movies: [...prevState.movies, data],
@@ -49,7 +49,7 @@ class Favourite extends Component {
         title={card.title || card.name}
         imgPath={card.poster_path}
         category={_PAGETITLE}
-        type={card.my_type}
+        type={card.my_TYPE}
       />
     ));
 

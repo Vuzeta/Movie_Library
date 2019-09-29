@@ -6,6 +6,8 @@ import facebookIcon from '../../assets/facebook_logo.svg';
 import linkedinIcon from '../../assets/linkedin_logo.svg';
 import githubIcon from '../../assets/github_logo.svg';
 import magnifier from '../../assets/magnifier.svg';
+import usFlag from '../../assets/us.svg';
+import plFlag from '../../assets/poland.svg';
 
 import { withRouter } from 'react-router-dom';
 
@@ -75,6 +77,22 @@ class UpperNav extends Component {
                 <img className="search__icon" src={magnifier} alt="magnifier" />
               </button>
             </form>
+          </div>
+          <div className="language">
+            <img
+              src={usFlag}
+              alt="US Flag"
+              className="language__logo"
+              onClick={this.props.changeLanguage}
+              data-language="en-US"
+            />
+            <img
+              src={plFlag}
+              alt="Poland Flag"
+              className="language__logo"
+              onClick={this.props.changeLanguage}
+              data-language="pl-PL"
+            />
           </div>
           <div className="socialMedia">
             <a href="https://vuzeta.github.io/Portfolio/" target="_blank" rel="noopener noreferrer">

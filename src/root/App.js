@@ -39,6 +39,11 @@ class App extends Component {
     movieQuery: '',
     select: '',
     favouriteMovies: [],
+    language: 'en-US',
+  };
+
+  changeLanguage = e => {
+    console.log(e.target.dataset.language);
   };
 
   addToFavouriteMovies = (category, id, title) => {
@@ -101,7 +106,7 @@ class App extends Component {
       <Router>
         <div className="container">
           <SideNav />
-          <UpperNav handleMovieQuery={this.handleMovieQuery} />
+          <UpperNav handleMovieQuery={this.handleMovieQuery} changeLanguage={this.changeLanguage} />
           <div className="centerNav">
             <Route path="/" exact component={Popularity} />
             <Route path="/tv-shows" component={TV_Shows} />

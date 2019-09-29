@@ -1,0 +1,11 @@
+.actor {
+  width: 230px;
+  padding: 30px 30px 20px 30px;
+  text-align: center;
+
+  &__img {
+    width: 150px;
+    height: 250px;
+    margin-bottom: 4px;
+  }
+}
