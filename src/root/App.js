@@ -29,8 +29,10 @@ import Thriller from '../pages/Thriller/Thriller';
 import War from '../pages/War/War';
 import Western from '../pages/Western/Western';
 import Search from '../pages/Search/Search';
-
 import Movie from '../components/Movie/Movie';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
   state = {
@@ -48,21 +50,42 @@ class App extends Component {
       }
     }
     if (found) {
-      console.log('jest już taki film');
+      toast.warn(`❗ ${title} is in Favourite `, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+      });
     } else {
       this.setState(prevState => ({
         favouriteMovies: [...prevState.favouriteMovies, { category, id, title }],
       }));
+      toast.success(`👍 ${title} added to Favourite`, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+      });
     }
   };
 
   removeFromFavouriteMovie = (id, title) => {
     let movies = this.state.favouriteMovies;
     movies = movies.filter(movie => movie.id !== id && movie.title !== title);
-    console.log(movies);
-
     this.setState({
       favouriteMovies: movies,
+    });
+    toast.info(`👍 Removed ${title} from Favourite`, {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
     });
   };
 
@@ -126,6 +149,17 @@ class App extends Component {
             />
           </div>
         </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover={false}
+        />
       </Router>
     );
   }
