@@ -103,7 +103,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div className="container">
           <SideNav />
           <UpperNav handleMovieQuery={this.handleMovieQuery} changeLanguage={this.changeLanguage} />
