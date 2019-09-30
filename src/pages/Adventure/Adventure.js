@@ -9,8 +9,9 @@ import Spinner from '../../components/Spinner/Spinner';
 
 const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
 const _PAGETITLE = 'Adventure';
+const _PAGETITLE_PL = 'Przygoda';
 const _GENDRES_ID = 12;
-const _LANGUAGE = 'en-US';
+
 const _TYPE = 'movie';
 
 class Adventure extends Component {
@@ -24,7 +25,7 @@ class Adventure extends Component {
   changePage = e => {
     const page = e.selected + 1;
 
-    const requestHost = `https://api.themoviedb.org/3/discover/movie?api_key=${_APIKEY}&language=${_LANGUAGE}&sort_by=popularity.desc&page=${page}&with_genres=${_GENDRES_ID}`;
+    const requestHost = `https://api.themoviedb.org/3/discover/movie?api_key=${_APIKEY}&language=${this.props.languageSite}&sort_by=popularity.desc&page=${page}&with_genres=${_GENDRES_ID}`;
 
     axios
       .get(requestHost)
@@ -49,7 +50,7 @@ class Adventure extends Component {
   };
 
   componentDidMount() {
-    const requestHost = `https://api.themoviedb.org/3/discover/movie?api_key=${_APIKEY}&language=${_LANGUAGE}&sort_by=popularity.desc&page=1&with_genres=${_GENDRES_ID}`;
+    const requestHost = `https://api.themoviedb.org/3/discover/movie?api_key=${_APIKEY}&language=${this.props.languageSite}&sort_by=popularity.desc&page=1&with_genres=${_GENDRES_ID}`;
 
     axios
       .get(requestHost)
@@ -87,7 +88,9 @@ class Adventure extends Component {
     ));
     return (
       <>
-        <h1 className="centerNav__title">{_PAGETITLE}</h1>
+        <h1 className="centerNav__title">
+          {this.props.languageSite === 'pl-PL' ? _PAGETITLE_PL : _PAGETITLE}
+        </h1>
         <div className="movies">
           {!this.state.loading ? <Spinner /> : null}
           {error ? <ErrorMessage /> : moviesList}

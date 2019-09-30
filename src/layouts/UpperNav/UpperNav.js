@@ -18,6 +18,12 @@ class UpperNav extends Component {
     focusSearch: false,
   };
 
+  changeLanguage = e => {
+    const languageSite = e.target.dataset.language;
+    this.props.changeLanguage(languageSite);
+    this.props.history.push('/');
+  };
+
   handleSelect = e => {
     const select = e.target.value;
     this.setState({
@@ -50,6 +56,8 @@ class UpperNav extends Component {
 
   render() {
     const { search, focusSearch } = this.state;
+    const searchPlaceholder = this.props.languageSite === 'pl-PL' ? '...Wyszukaj' : '...Search';
+
     return (
       <div className="upperNav">
         <div className="upperNav__wrapper">
@@ -63,15 +71,19 @@ class UpperNav extends Component {
               <input
                 type="text"
                 className="search__input"
-                placeholder={focusSearch ? '' : '...Search'}
+                placeholder={focusSearch ? '' : searchPlaceholder}
                 value={search}
                 onChange={this.handleSearch}
                 onClick={this.clickSearch}
                 required
               />
               <select className="search__select" onChange={this.handleSelect}>
-                <option value="tv">TV Movie</option>
-                <option value="movie">Movie</option>
+                <option value="tv">
+                  {this.props.languageSite === 'pl-PL' ? 'Seriale' : 'TV Series'}
+                </option>
+                <option value="movie">
+                  {this.props.languageSite === 'pl-PL' ? 'Filmy' : 'Movie'}
+                </option>
               </select>
               <button className="search__button">
                 <img className="search__icon" src={magnifier} alt="magnifier" />
@@ -83,14 +95,14 @@ class UpperNav extends Component {
               src={usFlag}
               alt="US Flag"
               className="language__logo"
-              onClick={this.props.changeLanguage}
+              onClick={this.changeLanguage}
               data-language="en-US"
             />
             <img
               src={plFlag}
               alt="Poland Flag"
               className="language__logo"
-              onClick={this.props.changeLanguage}
+              onClick={this.changeLanguage}
               data-language="pl-PL"
             />
           </div>

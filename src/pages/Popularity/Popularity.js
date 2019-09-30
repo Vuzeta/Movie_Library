@@ -9,7 +9,8 @@ import Spinner from '../../components/Spinner/Spinner';
 
 const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
 const _PAGETITLE = 'Popularity';
-const _LANGUAGE = 'en-US';
+const _PAGETITLE_PL = 'Popularne';
+
 const _TYPE = 'movie';
 
 class Popularity extends Component {
@@ -23,7 +24,7 @@ class Popularity extends Component {
   changePage = e => {
     const page = e.selected + 1;
 
-    const requestHost = `https://api.themoviedb.org/3/discover/movie?api_key=${_APIKEY}&language=${_LANGUAGE}&sort_by=popularity.desc&page=${page}`;
+    const requestHost = `https://api.themoviedb.org/3/discover/movie?api_key=${_APIKEY}&language=${this.props.languageSite}&sort_by=popularity.desc&page=${page}`;
 
     axios
       .get(requestHost)
@@ -48,7 +49,7 @@ class Popularity extends Component {
   };
 
   componentDidMount() {
-    const requestHost = `https://api.themoviedb.org/3/discover/movie?api_key=${_APIKEY}&language=${_LANGUAGE}&sort_by=popularity.desc&page=1`;
+    const requestHost = `https://api.themoviedb.org/3/discover/movie?api_key=${_APIKEY}&language=${this.props.languageSite}&sort_by=popularity.desc&page=1`;
 
     axios
       .get(requestHost)
@@ -86,7 +87,9 @@ class Popularity extends Component {
     ));
     return (
       <>
-        <h1 className="centerNav__title">{_PAGETITLE}</h1>
+        <h1 className="centerNav__title">
+          {this.props.languageSite === 'pl-PL' ? _PAGETITLE_PL : _PAGETITLE}
+        </h1>
         <div className="movies">
           {!this.state.loading ? <Spinner /> : null}
           {error ? <ErrorMessage /> : moviesList}

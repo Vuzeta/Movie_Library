@@ -7,7 +7,7 @@ import UpperNav from '../layouts/UpperNav/UpperNav';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Popularity from '../pages/Popularity/Popularity';
-import TV_Shows from '../pages/TV_Shows/TV_Shows';
+import TVShows from '../pages/TV_Shows/TV_Shows';
 import Favourite from '../pages/Favourite/Favourite';
 import Action from '../pages/Action/Action';
 import Adventure from '../pages/Adventure/Adventure';
@@ -23,8 +23,8 @@ import Horror from '../pages/Horror/Horror';
 import Music from '../pages/Music/Music';
 import Mystery from '../pages/Mystery/Mystery';
 import Romance from '../pages/Romance/Romance';
-import Science_Fiction from '../pages/Science_Fiction/Science_Fiction';
-import TV_Movie from '../pages/TV_Movie/TV_Movie';
+import ScienceFiction from '../pages/Science_Fiction/Science_Fiction';
+import TVMovie from '../pages/TV_Movie/TV_Movie';
 import Thriller from '../pages/Thriller/Thriller';
 import War from '../pages/War/War';
 import Western from '../pages/Western/Western';
@@ -39,11 +39,11 @@ class App extends Component {
     movieQuery: '',
     select: '',
     favouriteMovies: [],
-    language: 'en-US',
+    languageSite: 'en-US',
   };
 
-  changeLanguage = e => {
-    console.log(e.target.dataset.language);
+  changeLanguage = languageSite => {
+    this.setState({ languageSite });
   };
 
   addToFavouriteMovies = (category, id, title) => {
@@ -55,26 +55,36 @@ class App extends Component {
       }
     }
     if (found) {
-      toast.warn(`❗ ${title} is in Favourite `, {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-      });
+      toast.warn(
+        `❗ ${title} ${
+          this.state.languageSite === 'pl-PL' ? 'jest już w ulubionych' : 'is in favourite already'
+        } `,
+        {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+        },
+      );
     } else {
       this.setState(prevState => ({
         favouriteMovies: [...prevState.favouriteMovies, { category, id, title }],
       }));
-      toast.success(`👍 ${title} added to Favourite`, {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-      });
+      toast.success(
+        `👍 ${title} ${
+          this.state.languageSite === 'pl-PL' ? 'dodano do ulubionych' : 'added to favourite'
+        }`,
+        {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+        },
+      );
     }
   };
 
@@ -84,14 +94,19 @@ class App extends Component {
     this.setState({
       favouriteMovies: movies,
     });
-    toast.info(`👍 Removed ${title} from Favourite`, {
-      position: 'top-right',
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-    });
+    toast.info(
+      `👍 ${title} ${
+        this.state.languageSite === 'pl-PL' ? 'usunięto z ulubionych' : 'removed from favourite'
+      } `,
+      {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+      },
+    );
   };
 
   handleMovieQuery = (movieQuery, select) => {
@@ -105,36 +120,105 @@ class App extends Component {
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <div className="container">
-          <SideNav />
-          <UpperNav handleMovieQuery={this.handleMovieQuery} changeLanguage={this.changeLanguage} />
+          <SideNav languageSite={this.state.languageSite} />
+          <UpperNav
+            handleMovieQuery={this.handleMovieQuery}
+            changeLanguage={this.changeLanguage}
+            languageSite={this.state.languageSite}
+          />
           <div className="centerNav">
-            <Route path="/" exact component={Popularity} />
-            <Route path="/tv-shows" component={TV_Shows} />
+            <Route
+              path="/"
+              exact
+              render={props => <Popularity languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/tv-shows"
+              render={props => <TVShows languageSite={this.state.languageSite} />}
+            />
             <Route
               path="/favourite"
               render={props => (
-                <Favourite {...props} favouriteMovies={this.state.favouriteMovies} />
+                <Favourite
+                  {...props}
+                  favouriteMovies={this.state.favouriteMovies}
+                  languageSite={this.state.languageSite}
+                />
               )}
             />
-            <Route path="/action" component={Action} />
-            <Route path="/adventure" component={Adventure} />
-            <Route path="/animation" component={Animation} />
-            <Route path="/comedy" component={Comedy} />
-            <Route path="/crime" component={Crime} />
-            <Route path="/documentary" component={Documentary} />
-            <Route path="/drama" component={Drama} />
-            <Route path="/family" component={Family} />
-            <Route path="/fantasy" component={Fantasy} />
-            <Route path="/history" component={History} />
-            <Route path="/horror" component={Horror} />
-            <Route path="/music" component={Music} />
-            <Route path="/mystery" component={Mystery} />
-            <Route path="/romance" component={Romance} />
-            <Route path="/science-fiction" component={Science_Fiction} />
-            <Route path="/tv-movie" component={TV_Movie} />
-            <Route path="/thriller" component={Thriller} />
-            <Route path="/war" component={War} />
-            <Route path="/western" component={Western} />
+            <Route
+              path="/action"
+              render={props => <Action languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/adventure"
+              render={props => <Adventure languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/animation"
+              render={props => <Animation languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/comedy"
+              render={props => <Comedy languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/crime"
+              render={props => <Crime languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/documentary"
+              render={props => <Documentary languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/drama"
+              render={props => <Drama languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/family"
+              render={props => <Family languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/fantasy"
+              render={props => <Fantasy languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/history"
+              render={props => <History languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/horror"
+              render={props => <Horror languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/music"
+              render={props => <Music languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/mystery"
+              render={props => <Mystery languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/romance"
+              render={props => <Romance languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/science-fiction"
+              render={props => <ScienceFiction languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/tv-movie"
+              render={props => <TVMovie languageSite={this.state.languageSite} />}
+            />
+            <Route
+              path="/thriller"
+              render={props => <Thriller languageSite={this.state.languageSite} />}
+            />
+            <Route path="/war" render={props => <War languageSite={this.state.languageSite} />} />
+            <Route
+              path="/western"
+              render={props => <Western languageSite={this.state.languageSite} />}
+            />
             <Route
               path="/movie/:category/:type/:id"
               render={props => (
@@ -143,13 +227,19 @@ class App extends Component {
                   select={this.state.select}
                   addToFavouriteMovies={this.addToFavouriteMovies}
                   removeFromFavouriteMovie={this.removeFromFavouriteMovie}
+                  languageSite={this.state.languageSite}
                 />
               )}
             />
             <Route
               path="/search/:query"
               render={props => (
-                <Search {...props} movieQuery={this.state.movieQuery} select={this.state.select} />
+                <Search
+                  {...props}
+                  movieQuery={this.state.movieQuery}
+                  select={this.state.select}
+                  languageSite={this.state.languageSite}
+                />
               )}
             />
           </div>

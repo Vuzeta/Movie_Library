@@ -13,7 +13,6 @@ import AddFavourite from '../AddFavourite/AddFavourite';
 import RemoveFavourite from '../RemoveFavourite/RemoveFavourite';
 
 const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
-const _LANGUAGE = 'en-US';
 
 class Movie extends Component {
   state = {
@@ -35,7 +34,7 @@ class Movie extends Component {
   componentDidMount() {
     let category = this.props.match.params.type;
 
-    const requestHost = `https://api.themoviedb.org/3/${category}/${this.state.id}?api_key=${_APIKEY}&append_to_response=credits&language=${_LANGUAGE}`;
+    const requestHost = `https://api.themoviedb.org/3/${category}/${this.state.id}?api_key=${_APIKEY}&append_to_response=credits&language=${this.props.languageSite}`;
 
     if (category === 'tv') {
       axios
@@ -77,6 +76,7 @@ class Movie extends Component {
       axios
         .get(requestHost)
         .then(res => {
+          console.log(res);
           setTimeout(() => {
             this.setState({
               loading: true,
@@ -84,7 +84,7 @@ class Movie extends Component {
           }, 500);
 
           const {
-            original_title,
+            title,
             overview,
             genres,
             vote_average,
@@ -95,7 +95,7 @@ class Movie extends Component {
             backdrop_path,
           } = res.data;
           this.setState({
-            title: original_title,
+            title,
             overview,
             gendre: genres[0].name,
             ratio: vote_average / 2,
@@ -165,9 +165,9 @@ class Movie extends Component {
             />
           </div>
           <Overview overview={overview} />
-          <Cast cast={cast} />
+          <Cast cast={cast} languageSite={this.props.languageSite} />
         </div>
-        <Crew directed={directed} category={category} />
+        <Crew directed={directed} category={category} languageSite={this.props.languageSite} />
       </div>
     );
   }

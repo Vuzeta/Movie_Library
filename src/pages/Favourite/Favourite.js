@@ -5,8 +5,9 @@ import MovieCard from '../../components/MovieCard/MovieCard';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
-const _LANGUAGE = 'en-US';
+
 const _PAGETITLE = 'Favourite';
+const _PAGETITLE_PL = 'Ulubione';
 
 class Favourite extends Component {
   state = {
@@ -17,7 +18,7 @@ class Favourite extends Component {
   componentDidMount() {
     const moviesList = this.props.favouriteMovies;
     moviesList.forEach(movie => {
-      const requestHost = `https://api.themoviedb.org/3/${movie.category}/${movie.id}?api_key=${_APIKEY}&language=${_LANGUAGE}`;
+      const requestHost = `https://api.themoviedb.org/3/${movie.category}/${movie.id}?api_key=${_APIKEY}&language=${this.props.languageSite}`;
 
       axios
         .get(requestHost)
@@ -55,7 +56,9 @@ class Favourite extends Component {
 
     return (
       <div>
-        <h1 className="centerNav__title">{_PAGETITLE}</h1>
+        <h1 className="centerNav__title">
+          {this.props.languageSite === 'pl-PL' ? _PAGETITLE_PL : _PAGETITLE}
+        </h1>
         <div className="movies">{error ? <ErrorMessage /> : moviesList}</div>
       </div>
     );

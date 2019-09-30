@@ -10,8 +10,9 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Spinner from '../../components/Spinner/Spinner';
 
 const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
-const _LANGUAGE = 'en-US';
+
 const _PAGETITLE = 'Search';
+const _PAGETITLE_PL = 'Wyszukane';
 
 class Search extends Component {
   state = {
@@ -29,7 +30,7 @@ class Search extends Component {
 
     const requestHost = `https://api.themoviedb.org/3/search/${
       this.props.select
-    }?api_key=${_APIKEY}&language=${_LANGUAGE}&query=${encodeURIComponent(
+    }?api_key=${_APIKEY}&language=${this.props.languageSite}&query=${encodeURIComponent(
       this.props.movieQuery,
     )}&page=${page}`;
     axios
@@ -73,7 +74,7 @@ class Search extends Component {
   getDate = () => {
     const requestHost = `https://api.themoviedb.org/3/search/${
       this.props.select
-    }?api_key=${_APIKEY}&language=${_LANGUAGE}&query=${encodeURIComponent(
+    }?api_key=${_APIKEY}&language=${this.props.languageSite}&query=${encodeURIComponent(
       this.props.movieQuery,
     )}&page=${this.state.current_page}`;
 
@@ -113,7 +114,9 @@ class Search extends Component {
     ));
     return (
       <>
-        <h1 className="centerNav__title">{_PAGETITLE}</h1>
+        <h1 className="centerNav__title">
+          {this.props.languageSite === 'pl-PL' ? _PAGETITLE_PL : _PAGETITLE}
+        </h1>
         <div className="movies">
           {!this.state.loading ? <Spinner /> : null}
           {error ? <ErrorMessage /> : moviesList}
