@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import './UpperNav.scss';
 
-import homepageIcon from '../../assets/homepage_logo.svg';
-import facebookIcon from '../../assets/facebook_logo.svg';
-import linkedinIcon from '../../assets/linkedin_logo.svg';
-import githubIcon from '../../assets/github_logo.svg';
-import magnifier from '../../assets/magnifier.svg';
-import usFlag from '../../assets/us.svg';
-import plFlag from '../../assets/poland.svg';
+import Navigation from '../../components/Navigation/Navigation';
+import Search from '../../components/Search/Search';
+import Language from '../../components/Language/Language';
+import SocialMedia from '../../components/SocialMedia/SocialMedia';
 
 import { withRouter } from 'react-router-dom';
 
@@ -56,94 +53,21 @@ class UpperNav extends Component {
 
   render() {
     const { search, focusSearch } = this.state;
-    const searchPlaceholder = this.props.languageSite === 'pl-PL' ? '...Wyszukaj' : '...Search';
 
     return (
       <div className="upperNav">
         <div className="upperNav__wrapper">
-          <div className="navigation">
-            <span className="navigation__left">&#x0003C;</span>
-            <span className="navigation__center">&#x000B7;</span>
-            <span className="navigation__right">&#x0003E;</span>
-          </div>
-          <div className="search">
-            <form className="search__form" onSubmit={this.handleSearchSubmit}>
-              <input
-                type="text"
-                className="search__input"
-                placeholder={focusSearch ? '' : searchPlaceholder}
-                value={search}
-                onChange={this.handleSearch}
-                onClick={this.clickSearch}
-                required
-              />
-              <select className="search__select" onChange={this.handleSelect}>
-                <option value="tv">
-                  {this.props.languageSite === 'pl-PL' ? 'Seriale' : 'TV Series'}
-                </option>
-                <option value="movie">
-                  {this.props.languageSite === 'pl-PL' ? 'Filmy' : 'Movie'}
-                </option>
-              </select>
-              <button className="search__button">
-                <img className="search__icon" src={magnifier} alt="magnifier" />
-              </button>
-            </form>
-          </div>
-          <div className="language">
-            <img
-              src={usFlag}
-              alt="US Flag"
-              className="language__logo"
-              onClick={this.changeLanguage}
-              data-language="en-US"
-            />
-            <img
-              src={plFlag}
-              alt="Poland Flag"
-              className="language__logo"
-              onClick={this.changeLanguage}
-              data-language="pl-PL"
-            />
-          </div>
-          <div className="socialMedia">
-            <a href="https://vuzeta.github.io/Portfolio/" target="_blank" rel="noopener noreferrer">
-              <img
-                src={homepageIcon}
-                alt="homepage logo"
-                className="socialMedia__logo upperNav__logo"
-              />
-            </a>
-            <a
-              href="https://www.facebook.com/mateusz.machnik.1?ref=bookmarks"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={facebookIcon}
-                alt="facebook logo"
-                className="socialMedia__logo upperNav__logo"
-              />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/mateusz-machnik-566468159/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={linkedinIcon}
-                alt="linkedin logo"
-                className="socialMedia__logo upperNav__logo"
-              />
-            </a>
-            <a href="https://github.com/Vuzeta" target="_blank" rel="noopener noreferrer">
-              <img
-                src={githubIcon}
-                alt="github logo"
-                className="socialMedia__logo upperNav__logo"
-              />
-            </a>
-          </div>
+          <Navigation />
+          <Search
+            handleSearchSubmit={this.handleSearchSubmit}
+            focusSearch={focusSearch}
+            search={search}
+            handleSearch={this.handleSearch}
+            clickSearch={this.clickSearch}
+            languageSite={this.props.languageSite}
+          />
+          <Language changeLanguage={this.changeLanguage} />
+          <SocialMedia />
         </div>
       </div>
     );

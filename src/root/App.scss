@@ -54,6 +54,11 @@ ul {
     color: hsl(60, 8%, 93%);
     font-weight: 400;
   }
+
+  &__noData {
+    text-align: center;
+    color: hsl(193, 73%, 58%);
+  }
 }
 
 .movies {

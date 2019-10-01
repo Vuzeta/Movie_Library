@@ -11,6 +11,7 @@ import Crew from '../Crew/Crew';
 import Spinner from '../Spinner/Spinner';
 import AddFavourite from '../AddFavourite/AddFavourite';
 import RemoveFavourite from '../RemoveFavourite/RemoveFavourite';
+import WatchTrailer from '../WatchTrailer/WatchTrailer';
 
 const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
 
@@ -40,6 +41,7 @@ class Movie extends Component {
       axios
         .get(requestHost)
         .then(res => {
+          console.log(res);
           setTimeout(() => {
             this.setState({
               loading: true,
@@ -165,6 +167,7 @@ class Movie extends Component {
             />
           </div>
           <Overview overview={overview} />
+          <WatchTrailer />
           <Cast cast={cast} languageSite={this.props.languageSite} />
         </div>
         <Crew directed={directed} category={category} languageSite={this.props.languageSite} />

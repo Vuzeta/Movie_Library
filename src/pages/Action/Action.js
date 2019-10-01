@@ -11,7 +11,6 @@ const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
 const _PAGETITLE = 'Action';
 const _PAGETITLE_PL = 'Akcja';
 const _GENDRES_ID = 28;
-
 const _TYPE = 'movie';
 
 class Action extends Component {

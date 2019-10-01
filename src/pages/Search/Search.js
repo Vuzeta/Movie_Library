@@ -85,7 +85,7 @@ class Search extends Component {
           this.setState({
             loading: true,
           });
-        }, 200);
+        }, 300);
 
         this.setState({
           movies: res.data.results,
@@ -102,7 +102,7 @@ class Search extends Component {
   render() {
     const { movies, total_pages, error } = this.state;
 
-    const moviesList = movies.map(card => (
+    let moviesList = movies.map(card => (
       <MovieCard
         key={card.id}
         id={card.id}
@@ -112,16 +112,27 @@ class Search extends Component {
         type={this.state.select}
       />
     ));
+
     return (
       <>
         <h1 className="centerNav__title">
           {this.props.languageSite === 'pl-PL' ? _PAGETITLE_PL : _PAGETITLE}
         </h1>
-        <div className="movies">
-          {!this.state.loading ? <Spinner /> : null}
-          {error ? <ErrorMessage /> : moviesList}
-        </div>
-        {error ? null : <Pagination total_pages={total_pages} changePage={this.changePage} />}
+        {moviesList.length === 0 ? (
+          <h2 className="centerNav__noData">
+            {this.props.languageSite === 'pl-PL'
+              ? `Nie znalazłem takiego filmu/serialu 😔`
+              : `I couldn't find a movie/series like this 😔`}
+          </h2>
+        ) : (
+          <>
+            <div className="movies">
+              {!this.state.loading ? <Spinner /> : null}
+              {error ? <ErrorMessage /> : moviesList}
+            </div>
+            {error ? null : <Pagination total_pages={total_pages} changePage={this.changePage} />}
+          </>
+        )}
       </>
     );
   }

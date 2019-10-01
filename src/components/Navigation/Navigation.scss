@@ -1,0 +1,28 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+  padding-left: 30px;
+  font-size: 4rem;
+
+  &__center {
+    cursor: default;
+  }
+
+  &__left,
+  &__right {
+    cursor: pointer;
+  }
+
+  &__left,
+  &__right,
+  &__center {
+    color: hsl(189, 23%, 17%);
+  }
+
+  &__left:hover,
+  &__right:hover {
+    color: hsl(229, 24%, 83%);
+    transition: 0.4s;
+  }
+}
