@@ -1,27 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5abc8a4654d06c64fb606782ea320e8b",
+    "revision": "ddc6ee844d3c310a4ece7988e6e45c83",
     "url": "/Movie_Library/index.html"
   },
   {
-    "revision": "edf7cd63d0e9e41189d2",
+    "revision": "eb4e5f7241122496ca37",
     "url": "/Movie_Library/static/css/2.39017165.chunk.css"
   },
   {
-    "revision": "52c8006f992f75dec183",
-    "url": "/Movie_Library/static/css/main.396351c4.chunk.css"
+    "revision": "fb2cdde2257650794a38",
+    "url": "/Movie_Library/static/css/main.22dff68a.chunk.css"
   },
   {
-    "revision": "edf7cd63d0e9e41189d2",
-    "url": "/Movie_Library/static/js/2.1d236fb5.chunk.js"
+    "revision": "eb4e5f7241122496ca37",
+    "url": "/Movie_Library/static/js/2.66b47d79.chunk.js"
   },
   {
-    "revision": "52c8006f992f75dec183",
-    "url": "/Movie_Library/static/js/main.9c92b9ef.chunk.js"
+    "revision": "fb2cdde2257650794a38",
+    "url": "/Movie_Library/static/js/main.a7225507.chunk.js"
   },
   {
     "revision": "e76f529df6129bc413f8",
     "url": "/Movie_Library/static/js/runtime~main.15f7d51f.js"
+  },
+  {
+    "revision": "1efa80b1eb3c84f1cccac6f8799ebe20",
+    "url": "/Movie_Library/static/media/close_modal_icon.1efa80b1.svg"
   },
   {
     "revision": "e766a4aab448626ddbcfb0a374303bdc",
