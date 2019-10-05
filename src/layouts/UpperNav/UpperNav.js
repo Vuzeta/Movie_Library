@@ -55,7 +55,7 @@ class UpperNav extends Component {
     const { search, focusSearch } = this.state;
 
     return (
-      <div className="upperNav">
+      <aside className="upperNav">
         <div className="upperNav__wrapper">
           <Navigation />
           <Search
@@ -69,7 +69,7 @@ class UpperNav extends Component {
           <Language changeLanguage={this.changeLanguage} />
           <SocialMedia />
         </div>
-      </div>
+      </aside>
     );
   }
 }

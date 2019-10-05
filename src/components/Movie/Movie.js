@@ -30,18 +30,19 @@ class Movie extends Component {
     cast: [],
     background_poster: '',
     error: false,
+    videoKey: '',
   };
 
   componentDidMount() {
     let category = this.props.match.params.type;
 
     const requestHost = `https://api.themoviedb.org/3/${category}/${this.state.id}?api_key=${_APIKEY}&append_to_response=credits&language=${this.props.languageSite}`;
+    const video = `https://api.themoviedb.org/3/${category}/${this.state.id}?api_key=${_APIKEY}&append_to_response=videos`;
 
     if (category === 'tv') {
       axios
         .get(requestHost)
         .then(res => {
-          console.log(res);
           setTimeout(() => {
             this.setState({
               loading: true,
@@ -74,11 +75,17 @@ class Movie extends Component {
             error: !prevState.error,
           }));
         });
+
+      axios.get(video).then(res => {
+        const { videos } = res.data;
+        this.setState({
+          videoKey: videos.results.splice(0, 1)[0].key,
+        });
+      });
     } else {
       axios
         .get(requestHost)
         .then(res => {
-          console.log(res);
           setTimeout(() => {
             this.setState({
               loading: true,
@@ -99,14 +106,14 @@ class Movie extends Component {
           this.setState({
             title,
             overview,
-            gendre: genres[0].name,
-            ratio: vote_average / 2,
             runtime,
             category,
             release_date,
+            gendre: genres[0].name,
+            adult,
+            ratio: vote_average / 2,
             cast: credits.cast.splice(0, 8),
             directed: credits.crew.splice(0, 3),
-            adult,
             background_poster: `https://image.tmdb.org/t/p/original${backdrop_path}`,
           });
         })
@@ -115,11 +122,19 @@ class Movie extends Component {
             error: !prevState.error,
           }));
         });
+
+      axios.get(video).then(res => {
+        const { videos } = res.data;
+        this.setState({
+          videoKey: videos.results.splice(0, 1)[0].key,
+        });
+      });
     }
   }
 
   render() {
     const {
+      id,
       title,
       gendre,
       overview,
@@ -131,8 +146,8 @@ class Movie extends Component {
       directed,
       adult,
       background_poster,
+      videoKey,
     } = this.state;
-
     return (
       <div className="movie">
         {!this.state.loading ? <Spinner /> : null}
@@ -167,7 +182,7 @@ class Movie extends Component {
             />
           </div>
           <Overview overview={overview} />
-          <WatchTrailer />
+          <WatchTrailer videoKey={videoKey} />
           <Cast cast={cast} languageSite={this.props.languageSite} />
         </div>
         <Crew directed={directed} category={category} languageSite={this.props.languageSite} />

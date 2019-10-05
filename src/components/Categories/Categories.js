@@ -115,10 +115,10 @@ const Categories = ({ languageSite }) => {
     </li>
   ));
   return (
-    <div className="categories">
+    <nav className="categories">
       <p className="categories__title">{languageSite === 'pl-PL' ? 'Kategorie' : 'Categories'} </p>
       <ul className="categories__list">{catList}</ul>
-    </div>
+    </nav>
   );
 };
 

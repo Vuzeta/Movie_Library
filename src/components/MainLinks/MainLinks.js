@@ -30,9 +30,9 @@ const MainLinks = ({ languageSite }) => {
     </li>
   ));
   return (
-    <div className="mainLinks">
+    <nav className="mainLinks">
       <ul className="mainLinks__list">{linksList}</ul>
-    </div>
+    </nav>
   );
 };
 

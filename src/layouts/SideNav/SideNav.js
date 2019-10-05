@@ -7,13 +7,13 @@ import MainLinks from '../../components/MainLinks/MainLinks';
 
 const SideNav = ({ languageSite }) => {
   return (
-    <div className="sideNav">
-      <div className="sideNav__wrapper">
+    <aside className="sideNav">
+      <header className="sideNav__wrapper">
         <Logo />
         <MainLinks languageSite={languageSite} />
         <Categories languageSite={languageSite} />
-      </div>
-    </div>
+      </header>
+    </aside>
   );
 };
 
