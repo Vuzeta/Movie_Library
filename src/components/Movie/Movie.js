@@ -182,7 +182,7 @@ class Movie extends Component {
             />
           </div>
           <Overview overview={overview} />
-          <WatchTrailer videoKey={videoKey} />
+          <WatchTrailer videoKey={videoKey} languageSite={this.props.languageSite} />
           <Cast cast={cast} languageSite={this.props.languageSite} />
         </div>
         <Crew directed={directed} category={category} languageSite={this.props.languageSite} />

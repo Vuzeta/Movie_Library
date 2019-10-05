@@ -47,7 +47,7 @@ class WatchTrailer extends Component {
   }
 
   render() {
-    const { videoKey } = this.props;
+    const { videoKey, languageSite } = this.props;
     return (
       <>
         <Modal
@@ -61,7 +61,7 @@ class WatchTrailer extends Component {
         </Modal>
         <div className="trailer">
           <button className="trailer__btn" onClick={this.openModal}>
-            Watch Trailer
+            {languageSite === 'pl-PL' ? 'Zobacz Trailer' : 'Watch Trailer'}
           </button>
         </div>
       </>

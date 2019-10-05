@@ -74,6 +74,7 @@ class Action extends Component {
   }
   render() {
     const { movies, total_pages, error } = this.state;
+    console.log(this.props);
 
     const moviesList = movies.map(card => (
       <MovieCard

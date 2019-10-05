@@ -42,7 +42,6 @@ class Favourite extends Component {
 
   render() {
     const { movies, error } = this.state;
-    console.log(movies);
     const moviesList = movies.map(card => (
       <MovieCard
         key={card.id}
@@ -59,6 +58,13 @@ class Favourite extends Component {
         <h1 className="centerNav__title">
           {this.props.languageSite === 'pl-PL' ? _PAGETITLE_PL : _PAGETITLE}
         </h1>
+        {movies.length === 0 ? (
+          <h2 className="centerNav__noData">
+            {this.props.languageSite === 'pl-PL'
+              ? 'Lista ulubionych jest pusta'
+              : 'Favorites list is empty'}
+          </h2>
+        ) : null}
         <div className="movies">{error ? <ErrorMessage /> : moviesList}</div>
       </div>
     );

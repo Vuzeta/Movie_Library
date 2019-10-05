@@ -130,11 +130,11 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={() => <Popularity languageSite={this.state.languageSite} />}
+              render={props => <Popularity {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/tv-shows"
-              render={() => <TVShows languageSite={this.state.languageSite} />}
+              render={props => <TVShows {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/favourite"
@@ -148,67 +148,79 @@ class App extends Component {
             />
             <Route
               path="/action"
-              render={() => <Action languageSite={this.state.languageSite} />}
+              render={props => <Action {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/adventure"
-              render={() => <Adventure languageSite={this.state.languageSite} />}
+              render={props => <Adventure {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/animation"
-              render={() => <Animation languageSite={this.state.languageSite} />}
+              render={props => <Animation {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/comedy"
-              render={() => <Comedy languageSite={this.state.languageSite} />}
+              render={props => <Comedy {...props} languageSite={this.state.languageSite} />}
             />
-            <Route path="/crime" render={() => <Crime languageSite={this.state.languageSite} />} />
+            <Route
+              path="/crime"
+              render={props => <Crime {...props} languageSite={this.state.languageSite} />}
+            />
             <Route
               path="/documentary"
-              render={() => <Documentary languageSite={this.state.languageSite} />}
+              render={props => <Documentary {...props} languageSite={this.state.languageSite} />}
             />
-            <Route path="/drama" render={() => <Drama languageSite={this.state.languageSite} />} />
+            <Route
+              path="/drama"
+              render={props => <Drama {...props} languageSite={this.state.languageSite} />}
+            />
             <Route
               path="/family"
-              render={() => <Family languageSite={this.state.languageSite} />}
+              render={props => <Family {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/fantasy"
-              render={() => <Fantasy languageSite={this.state.languageSite} />}
+              render={props => <Fantasy {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/history"
-              render={() => <History languageSite={this.state.languageSite} />}
+              render={props => <History {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/horror"
-              render={() => <Horror languageSite={this.state.languageSite} />}
+              render={props => <Horror {...props} languageSite={this.state.languageSite} />}
             />
-            <Route path="/music" render={() => <Music languageSite={this.state.languageSite} />} />
+            <Route
+              path="/music"
+              render={props => <Music {...props} languageSite={this.state.languageSite} />}
+            />
             <Route
               path="/mystery"
-              render={() => <Mystery languageSite={this.state.languageSite} />}
+              render={props => <Mystery {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/romance"
-              render={() => <Romance languageSite={this.state.languageSite} />}
+              render={props => <Romance {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/science-fiction"
-              render={() => <ScienceFiction languageSite={this.state.languageSite} />}
+              render={props => <ScienceFiction {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/tv-movie"
-              render={() => <TVMovie languageSite={this.state.languageSite} />}
+              render={props => <TVMovie {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/thriller"
-              render={() => <Thriller languageSite={this.state.languageSite} />}
+              render={props => <Thriller {...props} languageSite={this.state.languageSite} />}
             />
-            <Route path="/war" render={() => <War languageSite={this.state.languageSite} />} />
+            <Route
+              path="/war"
+              render={props => <War {...props} languageSite={this.state.languageSite} />}
+            />
             <Route
               path="/western"
-              render={() => <Western languageSite={this.state.languageSite} />}
+              render={props => <Western {...props} languageSite={this.state.languageSite} />}
             />
             <Route
               path="/movie/:category/:type/:id"
