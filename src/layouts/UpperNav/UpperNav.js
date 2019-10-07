@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom';
 class UpperNav extends Component {
   state = {
     select: 'tv',
-    search: '',
+    searchValue: '',
     focusSearch: false,
   };
 
@@ -23,25 +23,22 @@ class UpperNav extends Component {
 
   handleSelect = e => {
     const select = e.target.value;
-    this.setState({
-      select,
-    });
+    this.setState({ select });
   };
 
   handleSearchSubmit = e => {
     e.preventDefault();
     this.setState(prevState => ({
-      search: '',
       focusSearch: !prevState.focusSearch,
     }));
-    this.props.handleMovieQuery(this.state.search, this.state.select);
-    this.props.history.push(`/search/${encodeURIComponent(this.state.search)}`);
+    this.props.handleMovieQuery(this.state.searchValue, this.state.select);
+    this.props.history.push(`/search/${encodeURIComponent(this.state.searchValue)}`);
   };
 
   handleSearch = e => {
     const value = e.target.value;
     this.setState({
-      search: value,
+      searchValue: value,
     });
   };
 
@@ -52,7 +49,7 @@ class UpperNav extends Component {
   };
 
   render() {
-    const { search, focusSearch } = this.state;
+    const { searchValue, focusSearch } = this.state;
 
     return (
       <aside className="upperNav">
@@ -61,10 +58,11 @@ class UpperNav extends Component {
           <Search
             handleSearchSubmit={this.handleSearchSubmit}
             focusSearch={focusSearch}
-            search={search}
+            searchValue={searchValue}
             handleSearch={this.handleSearch}
             clickSearch={this.clickSearch}
             languageSite={this.props.languageSite}
+            handleSelect={this.handleSelect}
           />
           <Language changeLanguage={this.changeLanguage} />
           <SocialMedia />

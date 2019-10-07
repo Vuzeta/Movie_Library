@@ -41,7 +41,7 @@ class TV_Shows extends Component {
         });
       })
       .catch(error => {
-        console.log(error);
+         
         this.setState(prevState => ({
           error: !prevState.error,
         }));
@@ -66,7 +66,7 @@ class TV_Shows extends Component {
         });
       })
       .catch(error => {
-        console.log(error);
+         
         this.setState(prevState => ({
           error: !prevState.error,
         }));

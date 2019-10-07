@@ -42,7 +42,7 @@ class Comedy extends Component {
         });
       })
       .catch(error => {
-        console.log(error);
+         
         this.setState(prevState => ({
           error: !prevState.error,
         }));
@@ -67,7 +67,7 @@ class Comedy extends Component {
         });
       })
       .catch(error => {
-        console.log(error);
+         
         this.setState(prevState => ({
           error: !prevState.error,
         }));

@@ -32,7 +32,7 @@ class Favourite extends Component {
           }));
         })
         .catch(error => {
-          console.log(error);
+           
           this.setState(prevState => ({
             error: !prevState.error,
           }));

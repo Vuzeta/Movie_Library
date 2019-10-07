@@ -47,45 +47,22 @@ class App extends Component {
   };
 
   addToFavouriteMovies = (category, id, title) => {
-    let movies = this.state.favouriteMovies;
-    let found = false;
-    for (let i = 0; i < movies.length; i++) {
-      if (movies[i].category === category && movies[i].id === id && movies[i].title === title) {
-        found = true;
-      }
-    }
-    if (found) {
-      toast.warn(
-        `❗ ${title} ${
-          this.state.languageSite === 'pl-PL' ? 'jest już w ulubionych' : 'is in favourite already'
-        } `,
-        {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-        },
-      );
-    } else {
-      this.setState(prevState => ({
-        favouriteMovies: [...prevState.favouriteMovies, { category, id, title }],
-      }));
-      toast.success(
-        `👍 ${title} ${
-          this.state.languageSite === 'pl-PL' ? 'dodano do ulubionych' : 'added to favourite'
-        }`,
-        {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-        },
-      );
-    }
+    this.setState(prevState => ({
+      favouriteMovies: [...prevState.favouriteMovies, { category, id, title }],
+    }));
+    toast.success(
+      `👍 ${title} ${
+        this.state.languageSite === 'pl-PL' ? 'dodano do ulubionych' : 'added to favourite'
+      }`,
+      {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+      },
+    );
   };
 
   removeFromFavouriteMovie = (id, title) => {
@@ -231,6 +208,7 @@ class App extends Component {
                   addToFavouriteMovies={this.addToFavouriteMovies}
                   removeFromFavouriteMovie={this.removeFromFavouriteMovie}
                   languageSite={this.state.languageSite}
+                  favouriteMovies={this.state.favouriteMovies}
                 />
               )}
             />

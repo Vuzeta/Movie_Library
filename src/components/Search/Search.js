@@ -5,7 +5,7 @@ import magnifier from '../../assets/magnifier.svg';
 const Search = ({
   handleSearchSubmit,
   focusSearch,
-  search,
+  searchValue,
   handleSelect,
   handleSearch,
   clickSearch,
@@ -20,7 +20,7 @@ const Search = ({
           type="text"
           className="search__input"
           placeholder={focusSearch ? '' : searchPlaceholder}
-          value={search}
+          value={searchValue}
           onChange={handleSearch}
           onClick={clickSearch}
           title=""

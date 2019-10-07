@@ -10,7 +10,6 @@ import Cast from '../Cast/Cast';
 import Crew from '../Crew/Crew';
 import Spinner from '../Spinner/Spinner';
 import AddFavourite from '../AddFavourite/AddFavourite';
-import RemoveFavourite from '../RemoveFavourite/RemoveFavourite';
 import WatchTrailer from '../WatchTrailer/WatchTrailer';
 
 const _APIKEY = '0c86cfa0a9f5e305d26a1995c47aa609';
@@ -31,6 +30,7 @@ class Movie extends Component {
     background_poster: '',
     error: false,
     videoKey: '',
+    isVideo: true,
   };
 
   componentDidMount() {
@@ -75,13 +75,6 @@ class Movie extends Component {
             error: !prevState.error,
           }));
         });
-
-      axios.get(video).then(res => {
-        const { videos } = res.data;
-        this.setState({
-          videoKey: videos.results.splice(0, 1)[0].key,
-        });
-      });
     } else {
       axios
         .get(requestHost)
@@ -122,14 +115,19 @@ class Movie extends Component {
             error: !prevState.error,
           }));
         });
-
-      axios.get(video).then(res => {
-        const { videos } = res.data;
+    }
+    axios.get(video).then(res => {
+      const { videos } = res.data;
+      console.log(res.data);
+      if (res.data.videos.results.length === 0) {
+        this.setState({ isVideo: false });
+      } else {
         this.setState({
+          isVideo: true,
           videoKey: videos.results.splice(0, 1)[0].key,
         });
-      });
-    }
+      }
+    });
   }
 
   render() {
@@ -147,7 +145,9 @@ class Movie extends Component {
       adult,
       background_poster,
       videoKey,
+      isVideo,
     } = this.state;
+
     return (
       <div className="movie">
         {!this.state.loading ? <Spinner /> : null}
@@ -155,23 +155,15 @@ class Movie extends Component {
         <div className="movie__box">
           <div className="movie__header">
             <h1 className="movie__title">{title}</h1>
-            {this.props.match.params.category === 'Favourite' ? (
-              <RemoveFavourite
-                category={this.state.category}
-                id={this.state.id}
-                removeFromFavouriteMovie={this.props.removeFromFavouriteMovie}
-                title={this.state.title}
-              />
-            ) : (
-              <AddFavourite
-                category={this.state.category}
-                id={this.state.id}
-                addToFavouriteMovies={this.props.addToFavouriteMovies}
-                title={this.state.title}
-              />
-            )}
+            <AddFavourite
+              category={category}
+              id={id}
+              addToFavouriteMovies={this.props.addToFavouriteMovies}
+              title={title}
+              removeFromFavouriteMovie={this.props.removeFromFavouriteMovie}
+              favouriteMovies={this.props.favouriteMovies}
+            />
           </div>
-
           <div className="movie__ranking">
             <Starbox ratio={ratio} />
             <Characteristic
@@ -182,7 +174,9 @@ class Movie extends Component {
             />
           </div>
           <Overview overview={overview} />
-          <WatchTrailer videoKey={videoKey} languageSite={this.props.languageSite} />
+          {isVideo ? (
+            <WatchTrailer videoKey={videoKey} languageSite={this.props.languageSite} />
+          ) : null}
           <Cast cast={cast} languageSite={this.props.languageSite} />
         </div>
         <Crew directed={directed} category={category} languageSite={this.props.languageSite} />
